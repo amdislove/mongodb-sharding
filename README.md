@@ -24,17 +24,16 @@ mongosh mongodb://localhost:10001
 ```
 Now inside the container, we have to pass the instances as members to form a replica set.
 ```
-rs.initiate(
-  {
-    _id: "config_rs",
-    configsvr: true,
-    members: [
-      { _id : 0, host : "10.100.20.178:10001" },
-      { _id : 1, host : "10.100.20.178:10002" },
-      { _id : 2, host : "10.100.20.178:10003" }
-    ]
-  }
-)
+rs.initiate({
+  _id: "config_rs",
+  configsvr: true,
+  members: [
+    { _id: 0, host: "configsvr1:27017" },
+    { _id: 1, host: "configsvr2:27017" },
+    { _id: 2, host: "configsvr3:27017" }
+  ]
+})
+
 ```
 You can check if the replica set status using the below command.
 ```
