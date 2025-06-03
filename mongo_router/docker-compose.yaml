@@ -6,6 +6,6 @@ services:
   mongos:
     container_name: mongos
     image: mongo:latest
-    command: mongos --configdb config_rs/10.100.20.178:10001,10.100.20.178:10002,10.100.20.178:10003 --port 27017
+    command: mongos --configdb config_rs/10.100.20.178:10001,10.100.20.178:10002,10.100.20.178:10003 --bind_ip 0.0.0.0 --port 27017
     ports:
       - 30000:27017
