@@ -11,6 +11,7 @@ All the above instances are created using docker containers. In this repo we cre
 ### Pre-requisites
 1. Install docker based on your platform.
 2. Install mongodb from https://www.mongodb.com/docs/manual/installation/
+3. Ubuntu > 24.x requires distutils-extra package
 
 ### Config servers
 Run the below docker command to start the  config servers
@@ -28,9 +29,9 @@ rs.initiate(
     _id: "config_rs",
     configsvr: true,
     members: [
-      { _id : 0, host : "<your-ip>:10001" },
-      { _id : 1, host : "<your-ip>:10002" },
-      { _id : 2, host : "<your-ip>:10003" }
+      { _id : 0, host : "10.100.20.178:10001" },
+      { _id : 1, host : "10.100.20.178:10002" },
+      { _id : 2, host : "10.100.20.178:10003" }
     ]
   }
 )
@@ -83,19 +84,16 @@ rs.initiate(
 ### Mongo routers
 Finally start the mongo routers:
 ```
-docker-compose -f mongos/docker-compose.yaml up -d
+docker-compose -f mongo_router/docker-compose.yaml up -d
 ```
 ```
 mongosh mongodb://localhost:30000
 ```
 Inside the container, now add both shards to the cluster 
 ```
-sh.addShard("shard1_rs/<your-ip>:20001,<your-ip>:20002,<your-ip>:20003")
-sh.addShard("shard2_rs/<your-ip>:20004,<your-ip>:20005,<your-ip>:20006")
+sh.addShard("shard1_rs/10.100.20.178:20001,10.100.20.178:20002,10.100.20.178:20003")
+sh.addShard("shard2_rs/10.100.20.178:20004,10.100.20.178:20005,10.100.20.178:20006")
 ```
-
-**Note:** Replace ```<your-ip>``` with your IPv4 address.
-
 
 ### Sharding the collection
 Make sure your application is always connected to mongo routers, it is not suggested to directly connect to shard replica sets.
