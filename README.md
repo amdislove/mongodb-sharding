@@ -59,9 +59,9 @@ rs.initiate(
   {
     _id: "shard1_rs",
     members: [
-      { _id : 0, host : "<your-ip>:20001" },
-      { _id : 1, host : "<your-ip>:20002" },
-      { _id : 2, host : "<your-ip>:20003" }
+      { _id : 0, host : "10.100.20.178:20001" },
+      { _id : 1, host : "10.100.20.178:20002" },
+      { _id : 2, host : "10.100.20.178:20003" }
     ]
   }
 )
@@ -73,9 +73,9 @@ rs.initiate(
   {
     _id: "shard2_rs",
     members: [
-      { _id : 0, host : "<your-ip>:20004" },
-      { _id : 1, host : "<your-ip>:20005" },
-      { _id : 2, host : "<your-ip>:20006" }
+      { _id : 0, host : "10.100.20.178:20004" },
+      { _id : 1, host : "10.100.20.178:20005" },
+      { _id : 2, host : "10.100.20.178:20006" }
     ]
   }
 )
