@@ -4,6 +4,7 @@ You can set-up sharding in MongoDB by creating a cluster of mongo instances cons
 1. Config servers
 2. Shard servers
 3. Mongo routers
+![MongoDB](https://github.com/amdislove/mongodb-sharding/blob/b16439847a1e58f054378ada2590f975034dcdac/mongodb-cluster.drawio.png)
 
 All the above instances are created using docker containers. In this repo we create 1 config replica set, 2 shard replica sets and 1 mongo router. Each replica set contains 3 mongo instances. 
 
